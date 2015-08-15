@@ -33,4 +33,17 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+    <!-- needed for LoggerInitializerFactory -->
+    <context-param>
+        <param-name>loggerInitializerClass</param-name>
+        <param-value>com.blogspot.dinhtienthuan.initializer.LogbackInitializer</param-value>
+    </context-param>
+
+    <!-- needed for LoggerInitializer -->
+    <context-param>
+        <param-name>loggerConfigLocation</param-name>
+        <param-value>/WEB-INF/logback-config/logback.xml</param-value>
+    </context-param>
 </web-app>

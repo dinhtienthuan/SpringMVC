@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
+                %msg %n
+            </Pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>TRACE</level>
+        </filter>
+    </appender>
+
+    <if condition='isDefined("path")'>
+        <then>
+            <appender name="FILE"
+                class="ch.qos.logback.core.rolling.RollingFileAppender">
+                <rollingPolicy
+                    class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                    <!-- rollover daily -->
+                    <fileNamePattern>${path}/%d{yyyy-MM-dd}.%i.log
+                    </fileNamePattern>
+                    <timeBasedFileNamingAndTriggeringPolicy
+                        class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                        <!-- or whenever the file size reaches 1MB -->
+                        <maxFileSize>10MB</maxFileSize>
+                    </timeBasedFileNamingAndTriggeringPolicy>
+                    <!-- Delete all log files that older than 30 days -->
+                    <maxHistory>30</maxHistory>
+                </rollingPolicy>
+                <encoder
+                    class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                    <Pattern>%d{HH:mm:ss.SSS} %-5level [%thread]
+                        [%logger{100}:%line] %msg%n
+                    </Pattern>
+                </encoder>
+            </appender>
+        </then>
+    </if>
+
+    <logger name="com.blogspot.dinhtienthuan" LEVEL="DEBUG" />
+
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="consoleAppender" />
+        <if condition='isDefined("path")'>
+            <then>
+                <appender-ref ref="FILE" />
+            </then>
+        </if>
+    </root>
+</configuration>
