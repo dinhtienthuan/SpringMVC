@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="defaultTemplate" template="/WEB-INF/templates/template.jsp">
+        <put-attribute name="title" value="Spring MVC" />
+        <put-attribute name="header"
+            value="/WEB-INF/templates/defaultHeader.jsp" />
+        <put-attribute name="content"
+            value="/WEB-INF/templates/defaultContent.jsp" />
+        <put-attribute name="footer"
+            value="/WEB-INF/templates/defaultFooter.jsp" />
+        <put-list-attribute name="cssList">
+            <add-attribute value="/resources/bootstrap/css/bootstrap.min.css" />
+            <add-attribute value="/resources/css/template.css" />
+        </put-list-attribute>
+        <put-list-attribute name="jsList">
+            <add-attribute value="/resources/jquery/jquery-1.11.3.min.js" />
+            <add-attribute value="/resources/bootstrap/js/bootstrap.min.js" />
+        </put-list-attribute>
+    </definition>
+
+    <definition name="tiles" extends="defaultTemplate">
+        <put-attribute name="title"
+            value="Spring MVC integrated with Tiles 3" />
+        <put-attribute name="content" value="/WEB-INF/views/jsp/tiles.jsp" />
+    </definition>
+</tiles-definitions>
