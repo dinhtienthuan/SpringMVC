@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration>
+<configuration debug="true">
     <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -
-                %msg %n
+                %msg%n
             </Pattern>
         </encoder>
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>TRACE</level>
-        </filter>
     </appender>
 
     <if condition='isDefined("path")'>
@@ -38,15 +35,14 @@
         </then>
     </if>
 
-    <logger name="com.blogspot.dinhtienthuan" LEVEL="DEBUG" />
-
-    <root>
-        <level value="INFO" />
+    <logger name="com.blogspot.dinhtienthuan" LEVEL="INFO"
+        additivity="true">
         <appender-ref ref="consoleAppender" />
         <if condition='isDefined("path")'>
             <then>
                 <appender-ref ref="FILE" />
             </then>
         </if>
-    </root>
+    </logger>
+
 </configuration>
