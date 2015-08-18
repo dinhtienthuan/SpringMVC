@@ -24,4 +24,11 @@
             value="Spring MVC integrated with Tiles 3" />
         <put-attribute name="content" value="/WEB-INF/views/jsp/tiles.jsp" />
     </definition>
+
+    <definition name="employee" extends="defaultTemplate">
+        <put-attribute name="title"
+            value="Spring MVC integrated with HikariCP" />
+        <put-attribute name="content"
+            value="/WEB-INF/views/jsp/employee.jsp" />
+    </definition>
 </tiles-definitions>
