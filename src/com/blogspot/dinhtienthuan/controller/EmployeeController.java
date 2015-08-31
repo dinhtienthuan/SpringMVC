@@ -19,7 +19,7 @@ public class EmployeeController {
     private static final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
-    @Qualifier("employeeDAO")
+    @Qualifier("hibernateEmployeeDAO")
     private EmployeeDAO employeeDAO;
 
     @RequestMapping(value = "/employee", method = RequestMethod.GET)

@@ -58,6 +58,12 @@
             <artifactId>spring-webmvc</artifactId>
             <version>4.2.0.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-orm</artifactId>
+            <version>4.2.0.RELEASE</version>
+        </dependency>
         <!-- /Spring Framework -->
 
         <!-- Logger -->
@@ -124,5 +130,14 @@
             <version>5.1.36</version>
         </dependency>
         <!-- /MySQL Connector/J -->
+
+        <!-- Hibernate O/RM -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.0.0.Final</version>
+        </dependency>
+        <!-- /Hibernate O/RM -->
+
     </dependencies>
 </project>

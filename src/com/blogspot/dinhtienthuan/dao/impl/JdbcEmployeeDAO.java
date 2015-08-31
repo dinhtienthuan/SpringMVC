@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.blogspot.dinhtienthuan.dao.EmployeeDAO;
 import com.blogspot.dinhtienthuan.entity.Employee;
 
-@Repository("employeeDAO")
+@Repository("jdbcEmployeeDAO")
 public class JdbcEmployeeDAO implements EmployeeDAO {
     @Autowired
     @Qualifier("dataSource")
