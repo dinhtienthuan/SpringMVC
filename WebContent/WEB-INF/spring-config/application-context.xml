@@ -11,5 +11,7 @@
             value="jdbc:mysql://192.168.0.105:3306/employees" />
         <property name="username" value="root" />
         <property name="password" value="root" />
+        <property name="maximumPoolSize" value="4" />
+        <property name="minimumIdle" value="1" />
     </bean>
 </beans>

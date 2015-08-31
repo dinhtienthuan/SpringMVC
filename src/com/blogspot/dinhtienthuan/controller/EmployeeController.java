@@ -27,8 +27,11 @@ public class EmployeeController {
         logger.info("Inside findEmployee() method.");
         modelView.setViewName("employee");
         try {
-            Employee employee = employeeDAO.findByEmployeeId(10001);
-            modelView.addObject("employee", employee);
+            for (int i = 0; i < 100; i++) {
+                Employee employee = employeeDAO.findByEmployeeId(10001);
+                modelView.addObject("employee", employee);
+                System.out.println("Employee name: " + employee.getFirstName());
+            }
         } catch (SQLException e) {
             logger.debug(e.getMessage());
         }

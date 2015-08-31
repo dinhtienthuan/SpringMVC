@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Repository;
 
 import com.blogspot.dinhtienthuan.dao.EmployeeDAO;
@@ -30,7 +31,17 @@ public class JdbcEmployeeDAO implements EmployeeDAO {
         String sql = "SELECT emp_no, birth_date, first_name, last_name, gender, hire_date FROM employees WHERE emp_no = ?";
         logger.info("Find employee by id = {}", employeeId);
         jdbcTemplate = new JdbcTemplate(dataSource);
-        Employee employee = jdbcTemplate.queryForObject(sql, new Object[] {employeeId}, new EmployeeRowMapper());
+        // Employee employee = jdbcTemplate.queryForObject(sql, new Object[]
+        // {employeeId}, new EmployeeRowMapper());
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, new Object[] {employeeId});
+        Employee employee = new Employee();
+        rowSet.next();
+        employee.setId(rowSet.getInt("emp_no"));
+        employee.setBirthDate(rowSet.getDate("birth_date"));
+        employee.setFirstName(rowSet.getString("first_name"));
+        employee.setLastName(rowSet.getString("last_name"));
+        employee.setGender(rowSet.getString("gender"));
+        employee.setHireDate(rowSet.getDate("hire_date"));
 
         return employee;
     }
